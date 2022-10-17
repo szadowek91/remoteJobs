@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,11 +20,11 @@ public class UserEAddress {
     private String state;
     private String country;
     private Long zipcode;
-    @OneToOne
-    @JoinColumn(name = "USER_ID")
-    private UserE userE;
-    @OneToOne
-    @JoinColumn(name = "ADVERT_ID")
-    private AdvertE advertE;
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE})
+    private List<UserE> usersE;
+
 
 }

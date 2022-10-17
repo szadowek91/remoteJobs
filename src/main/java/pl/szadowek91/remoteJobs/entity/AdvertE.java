@@ -18,8 +18,8 @@ public class AdvertE {
     private String name;
     private String description;
     private Double price;
-//    @ManyToOne
-//    @JoinColumn(name = "USER_ID")
-//    private UserE user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private UserE userE;
 
 }
