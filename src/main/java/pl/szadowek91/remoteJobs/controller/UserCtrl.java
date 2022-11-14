@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import pl.szadowek91.remoteJobs.dto.ManageUserDetailsDto;
 import pl.szadowek91.remoteJobs.dto.UserDto;
 import pl.szadowek91.remoteJobs.dto.mapper.UserMapper;
 import pl.szadowek91.remoteJobs.entity.UserE;
@@ -40,6 +41,12 @@ public class UserCtrl {
         userService.createNewUser(userE);
         System.out.println(userE + " created and saved successfully");
         return "redirect:/";
+    }
+
+    @GetMapping("/manageAccount")
+    public String manageAccount(Model model){
+        model.addAttribute("manageAccount", new ManageUserDetailsDto());
+        return "manageAccount";
 
     }
 }
